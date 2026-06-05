@@ -1,0 +1,10 @@
+{
+  "appId": "com.persagy.yushugongdan",
+  "appName": "CapacitorCase",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false
+    }
+  }
+}
