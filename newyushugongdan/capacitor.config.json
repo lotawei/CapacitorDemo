@@ -1,7 +1,7 @@
 {
   "appId": "com.persagy.yushugongdan",
   "appName": "CapacitorCase",
-  "webDir": "dist",
+  "webDir": "../vuedemo/dist",
   "plugins": {
     "SplashScreen": {
       "launchAutoHide": false

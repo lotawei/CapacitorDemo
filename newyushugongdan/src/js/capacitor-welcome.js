@@ -1,6 +1,7 @@
 import { SplashScreen } from '@capacitor/splash-screen';
 import { Camera } from '@capacitor/camera';
 
+
 window.customElements.define(
   'capacitor-welcome',
   class extends HTMLElement {
@@ -82,6 +83,9 @@ window.customElements.define(
           <button class="button" id="take-photo">Take Photo</button>
         </p>
         <p>
+          <button class="button" id="pick-photo">Pick Photo</button>
+        </p>
+        <p>
           <img id="image" style="max-width: 100%">
         </p>
       </main>
@@ -91,6 +95,22 @@ window.customElements.define(
 
     connectedCallback() {
       const self = this;
+      self.shadowRoot.querySelector('#pick-photo').addEventListener('click', async function (e) {
+        try {
+          const photo = await Camera.pickImages({
+            resultType: 'uri',
+          });
+
+          const image = self.shadowRoot.querySelector('#image');
+          if (!image) {
+            return;
+          }
+
+          image.src = photo.photos[0].webPath;
+        } catch (e) {
+          console.warn('User cancelled', e);
+        }
+      });
 
       self.shadowRoot.querySelector('#take-photo').addEventListener('click', async function (e) {
         try {
